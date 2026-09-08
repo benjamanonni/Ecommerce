@@ -3,7 +3,8 @@ const app=express();
 
 //app.set("nombreDeConfiguracion", "valor")
 app.set("view engine","ejs");
-
+//configuramos asset como carpeta estatica
+app.use(express.static("assets"));
 const puerto=3000;
 
 //definimos rutas 

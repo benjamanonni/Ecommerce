@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="/css/styles.css">
+<%- include("../partials/header.ejs") %>
+
+<main class="register-main"> 
+<%#formulario donde se van a mandar los datos cuando el usuario los ingrese%>
+<form class="register-card" action="/register"method="post">
+    <h1>¡Registrate!</h1>
+<label class="visually-hidden" for="nombre">Nombre</label>
+<input id="nombre" name="nombre" type="text" placeholder="Tu nombre"/>
+
+<label class="visually-hidden" for="email">Email</label>
+<input id="email" name="email" type="email" placeholder="Tu email"/>
+
+<label class="visually-hidden" for="contraseña">Contraseña</label>
+<input id="contraseña" name="contraseña" type="password" placeholder="Tu contraseña"/>
+
+<label class="visually-hidden" for="ContraseñaRepetida">Repetir contraseña</label>
+<input id="ContraseñaRepetida" name="contraseñaRepetida" type="password" placeholder="Repite tu contraseña"/>
+    <button >Crear cuenta</button>
+</form>
+<p>Ya tienes cuenta?
+    <a href="/login">Iniciar sesion</a>
+</p>
+</main>
+<%- include("../partials/footer.ejs") %>
