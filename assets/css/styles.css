@@ -1,20 +1,8 @@
-.register-card{
-    /* estilos de la tarjeta/formulario */
-    width: 340px; /*definimos su ancho*/
-    padding: 32px;/*espacio interneto entre borde y contenido*/
-    margin:0 auto; /*centramos la box*/
-    background-color: white; 
-    border-radius: 12px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
-    margin-top: 50px;
-    box-sizing: border-box;
+/* =========================
+   UTILIDADES GENERALES
+========================= */
 
-    /*usamos flex box para redistribuir mejor los elementos hijos */
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-}
-/*esconder labels*/
+/* Oculta visualmente, pero mantiene accesibilidad */
 .visually-hidden {
     position: absolute;
     width: 1px;
@@ -26,59 +14,18 @@
     white-space: nowrap;
     border: 0;
 }
-.register-card h1 {
-    font-family: Arial, sans-serif;
-    font-size: 28px;
-    font-weight: 400;
-    margin-bottom: 10px;
-}
-.register-card input{
-      /* estilos de los inputs que están dentro de esa tarjeta */
-    width: 100%; /*ancho*/
-    padding: 12px; /*espacio interno entre borde y contenido*/
-    border: 1px solid #ccc; 
-    border-radius: 24px;
-    box-sizing: border-box; /*input no sobresale*/
-    font-size: 14px; /*controla tamaño de texto*/
-}
-.register-card button {
-    padding: 14px 18px;
-    border-radius: 30px;
-    width: 100%;
-    background-color: #4f5a5d;
-    border: none;
-    color: white;
-    cursor: pointer; /*muestra mano al pasar el cursor*/
-}
 
-.register-main{
-    /*estilos que pertenecen a todo lo central*/
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    padding: 40px 20px;
 
-    background: linear-gradient(
-        to bottom,
-        #12b39e 0px,
-        #12b39e 300px,
-        #eeeeee 300px,
-        #eeeeee 100%
-    );
-    min-height: 83vh
-}
-.register-main a{
-    color: black;
-}
+/* =========================
+   LOGO MI ECOMMERCE
+========================= */
 
-/*HEADER*/
-header a {
-    /*eliminamos subrayado*/
+.header-logo {
     text-decoration: none;
     font-size: 28px;
     font-family: Arial, sans-serif;
 }
+
 .logo-mi {
     color: #0b8f83;
     font-weight: 700;
@@ -89,10 +36,134 @@ header a {
     font-weight: 300;
 }
 
-/*FOOTER*/
+
+/* =========================
+   REGISTER / LOGIN
+========================= */
+
+.register-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    padding: 40px 20px;
+
+    background: linear-gradient(
+        to bottom,
+        #12b39e 0px,
+        #12b39e 300px,
+        #eeeeee 300px,
+        #eeeeee 100%
+    );
+
+    min-height: 83vh;
+}
+
+.register-main a {
+    color: black;
+}
+
+.register-card {
+    width: 340px;
+    padding: 32px;
+
+    margin: 50px auto 0;
+
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.register-card h1 {
+    font-family: Arial, sans-serif;
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.register-card input {
+    width: 100%;
+    padding: 12px;
+
+    border: 1px solid #ccc;
+    border-radius: 24px;
+
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.register-card button {
+    width: 100%;
+    padding: 14px 18px;
+
+    border: none;
+    border-radius: 30px;
+
+    background-color: #4f5a5d;
+    color: white;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   HEADER HOME
+========================= */
+
+.header-home {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 10px 40px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: white;
+    border-bottom: 2px solid #d8d8d8;/*linea de distancia*/
+    margin-bottom: 40px;
+}
+
+.header-carrito-icono {
+    width: 24px;
+    height: 24px;
+}
+
+.header-buscador{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    overflow: hidden;
+    
+}
+.header-buscador input {
+    flex: 1;
+    border: none;
+    padding: 10px 14px;
+    outline: none; /*evita que los elementos salgan de la zona*/
+}
+.header-buscador button {
+    border: none;
+    background: white;
+    padding: 10px 14px;
+    cursor: pointer;
+}
+
+
+/* =========================
+FOOTER
+========================= */
+
 footer {
     display: flex;
-    justify-content: space-between; /*separa cada uno en espacio proporcional*/
+    justify-content: space-between;
     align-items: center;
 
     padding: 18px 40px;
@@ -103,14 +174,17 @@ footer {
     font-size: 12px;
     color: #9a9a9a;
 }
+
 footer a {
     color: #9a9a9a;
     text-decoration: none;
 }
+
 .footer-social img {
     width: 18px;
     height: 18px;
 }
+
 .footer-stores {
     display: flex;
     align-items: center;
@@ -121,6 +195,7 @@ footer a {
     width: 18px;
     height: 18px;
 }
+
 .footer-stores a {
     display: flex;
     align-items: center;
@@ -129,4 +204,132 @@ footer a {
     color: #999;
     text-decoration: none;
     font-size: 12px;
+}
+/*---------------------------
+CATEGORY BAR
+----------------------------*/
+.category-bar{
+    display: flex;
+    background-color: #333;
+    width: 80%;
+    border-radius: 20px;
+    
+}
+.category-bar a {
+    flex: 1; /*las 8 categoria se reparten de forma pareja*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    
+    color: white;
+    text-decoration: none;
+    padding: 30px;
+    border-right: 1px solid #666; /*agregamos linea horizontal*/
+}
+/*borramos ultima barra*/
+.category-bar a:last-child {
+    border-right: none;
+}
+.category-bar img{
+    width: 32px;
+    height: 32px;
+}
+/*----------------------
+FONDO DE MAIN
+---------------*/
+.index {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    
+
+    padding: 40px 20px;
+
+    background: linear-gradient(
+        to bottom,
+        
+    #eeeeee 0px,
+    #eeeeee 300px,
+    #12b39e 300px,
+    #12b39e 600px,
+    #eeeeee 600px,
+    #eeeeee 100%
+        
+    );
+
+    min-height: 83vh;
+}
+body {
+    margin: 0;
+}
+/*--------------------------
+PRODUCT HERO
+-------------------*/
+.product-heros {
+    display: flex;
+    gap: 20px;
+    width: 90%;
+    margin-top: 60px;
+}
+
+.product-hero {
+    flex: 1;
+}
+
+.product-hero img {
+    width: 100%;
+    border-radius: 20px;
+}
+/*---------------------------
+PRODUCT CARD
+--------------------------------*/
+.products-cards{
+    display: grid;
+    width: 80%;
+    margin: 0 auto;
+    gap: 20px;
+    grid-template-columns: repeat(4, 1fr);/*aclaramos cantidad de columnas*/
+    max-width: 1100px;
+}
+.product-card{
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: white;
+    box-sizing: border-box;
+    height: 320px;
+    overflow: hidden;
+}
+.product-card a {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    color: black;
+    text-decoration: none;
+}
+.product-card img{
+    width: 100%;
+    height: 75%;
+    object-fit: contain;
+}
+.product-info {
+    display: flex;
+    padding: 10px;
+    box-sizing: border-box;
+}
+/*añadimos linea de separacion*/
+.product-info p {
+    width: 35%;
+    margin: 0;
+    border-left: 1px solid #ccc;
+    padding-left: 12px;
+}
+
+.product-info h3 {
+    width: 65%;
+    margin: 0;
 }
