@@ -1,0 +1,54 @@
+<link rel="stylesheet" href="/css/styles.css">
+<%- include("../partials/headerHome.ejs") %>
+
+    <main class="product-pages">
+        <nav class="breadcrumb">
+    <a href="/">← Volver al listado</a>
+    <span>&gt;</span>
+    <span>Alimentos</span>
+</nav>
+        <section class="product-details">
+            <div class="product-gallery">
+                <div class="miniaturas">
+                    <a href="#">
+                        <img src="/imagenesProductCard/imagenesJagger/jagger3.png" alt="imagen de jagger secundaria">
+                    </a>
+                    <a href="#">
+                        <img src="/imagenesProductCard/imagenesJagger/jagger4.png" alt="imagen de jagger terciaria">
+                    </a>
+                    <a href="#">
+                        <img src="/imagenesProductCard/imagenesJagger/jagger2.png" alt="imagen de jagger principal">
+                    </a>
+                </div>
+                <a href="#">
+                    <img class="imagen-principal" src="/imagenesProductCard/imagenesJagger/jagger2.png"
+                        alt="imagen de jagger principal">
+                </a>
+            </div>
+
+            <article class="product-detail-info">
+                <h1>Licor Jagermeinster
+                    750 ml </h1>
+                <p class="product-price">
+                    <span class="product-points">14.000</span>
+                    <span class="product-points-label">PUNTOS</span>
+                </p>
+                <button class="boton" type="button">
+                    Agregar al carrito
+                </button>
+                <p>
+                    Jägermeister es mucho más que un licor; es un icono global de la cultura nocturna y la tradición
+                    alemana. Elaborado con una receta secreta que se ha mantenido intacta desde su creación en 1934 por
+                    Curt Mast, este licor de hierbas (Kräuterlikör) combina maestría, misterio y un carácter
+                    inconfundible que se disfruta en todo el mundo.Cada botella es el resultado de un riguroso proceso
+                    de maceración y un envejecimiento de un año en barricas de roble, garantizando una calidad
+                    excepcional en cada trago.
+                </p>
+            </article>
+        </section>
+        <h2 class="te-puede-interesar">Tambien te puede interesar</h2>
+        
+        <%- include("../partials/productCard.ejs")%>
+        <%- include("../partials/categoryBar.ejs")%>
+    </main>
+    <%- include("../partials/footer.ejs")%>
