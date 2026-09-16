@@ -462,3 +462,115 @@ box-shadow: 0 3px 8px rgba(0, 0, 0, 0.18);
     text-decoration: none;
     color: black;
 }
+/*------------------------------
+PAGINA CARRITO
+-------------------------------*/
+.pagina-carrito {
+    width: 100%;
+    background-color: #eeeeee;
+    min-height: 83vh;
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+}
+
+.contenido-carrito {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+    gap: 15px;
+}
+.contenido-carrito h1 {
+    font-family: Arial, sans-serif;
+    font-size: 26px;
+    font-weight: 300;
+}
+.productos-carrito {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+}
+.producto-carrito {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+    gap: 15px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.18);
+}
+.producto-carrito-imagen {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    border-radius: 15px;
+    object-fit: cover;
+}
+.producto-carrito-info {
+    flex: 1;
+}
+.producto-carrito-info h2 {
+    font-family: Arial, sans-serif;
+    font-weight: 300;
+}
+.producto-carrito-cantidad {
+    border: 1px solid black;
+    border-radius: 15px;
+}
+.producto-carrito-cantidad button {
+    border: none;
+    background: transparent;
+    padding: 12px 18px;
+}
+.producto-carrito-quitar {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 15px;
+    background-color: #4f5a5d;
+    color: white;
+}
+.producto-carrito-puntos {
+    font-family: Arial, sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    margin: 10px;
+}
+.resumen-carrito{
+    display: flex;
+    align-self: flex-end; /*lo movemos hacia la derecha*/
+    flex-direction: column;
+    gap: 15px;
+}
+.boton-pagar{
+    padding: 12px 18px;
+    border: none;
+    border-radius: 15px;
+    background-color: #4f5a5d;
+    color: white;
+    text-decoration: none;
+    align-self: center;
+}
+.total-carrito {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 20px;
+}
+.total-carrito span:first-child {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.total-carrito span:last-child {
+    font-family: Arial, sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+}
