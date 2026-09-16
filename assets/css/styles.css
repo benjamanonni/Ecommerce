@@ -574,3 +574,94 @@ body {
     font-size: 22px;
     font-weight: 700;
 }
+/* =========================
+   CHECKOUT
+========================= */
+
+.pagina-checkout {
+    width: 100%;
+    min-height: 83vh;
+    background-color: #eeeeee;
+}
+
+.contenido-checkout {
+    display: flex;
+    flex-direction: column;
+
+    width: 80%;
+    margin: auto;
+    gap: 20px;
+
+    padding-top: 30px;
+}
+
+.contenido-checkout h1 {
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.resumen-checkout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    width: 50%;
+    margin: auto;
+
+    padding: 25px;
+
+    background-color: white;
+
+    border: 1px solid #ccc;
+    border-radius: 15px;
+
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.18);
+
+    font-family: Arial, sans-serif;
+}
+
+.checkout-producto {
+    display: flex;
+    justify-content: space-between;
+
+    padding-bottom: 15px;
+
+    border-bottom: 1px solid #ccc;
+}
+
+.checkout-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.checkout-total strong {
+    font-size: 22px;
+}
+
+.checkout-confirmar {
+    padding: 12px 18px;
+
+    border: none;
+    border-radius: 15px;
+
+    background-color: #4f5a5d;
+    color: white;
+
+    cursor: pointer;
+}
+
+/*---------------------
+AGREGAR REGISTER Y INICIAR SESION A HOME
+-------------------------*/
+.header-auth {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}
+
+.header-auth a {
+    color: black;
+    text-decoration: none;
+}

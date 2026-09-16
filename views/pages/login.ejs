@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="/css/styles.css">
 <%- include("../partials/headerAuth.ejs") %>
 <main class="register-main">
-    <form class="register-card" action="/login.ejs">
+    <form class="register-card" action="/">
         <h1>¡Hola!</h1>
 
         <label class="visually-hidden" for="nombre">Nombre</label>
@@ -9,8 +9,7 @@
 
         <label class="visually-hidden" for="contraseña">Contraseña</label>
         <input type="password" name="contraseña" id="contraseña" placeholder="Tu contraseña">
-
-        <button>Iniciar sesion</button>
+            <button>Iniciar sesion</button>
     </form>
     <p>No tienes cuenta?
     <a href="/register">Registrate</a>
