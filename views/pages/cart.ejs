@@ -1,44 +1,64 @@
-<link rel="stylesheet" href="/css/styles.css">
+<!DOCTYPE html>
 
-<%- include("../partials/headerHome.ejs") %>
+<html lang="es">
 
-    <main class="pagina-carrito">
-        <div class="contenido-carrito">
-            <nav class="breadcrumb">
-                <a href="/">← Volver al listado</a>
-            </nav>
-            <h1>Productos en tu carrito</h1>
+<head>
 
-            <section class="productos-carrito">
-                <article class="producto-carrito">
-                    <img class="producto-carrito-imagen" src="/imagenesProductCard/imagenesJagger/jagger2.png"
-                        alt="Foto de Jagermeister">
-                    <div class="producto-carrito-info">
-                        <h2>Jagermeister 750 mL</h2>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <title>Mi Ecommerce</title>
+
+</head>
+
+<body>
+    <%- include("../partials/headerHome.ejs") %>
+
+        <main class="pagina-carrito">
+            <div class="contenido-carrito">
+                <nav class="breadcrumb">
+                    <a href="/">← Volver al listado</a>
+                </nav>
+                <h1>Productos en tu carrito</h1>
+
+                <section class="productos-carrito">
+                    <article class="producto-carrito">
+                        <img class="producto-carrito-imagen" src="/imagenesProductCard/imagenesJagger/jagger2.png"
+                            alt="Foto de Jagermeister">
+                        <div class="producto-carrito-info">
+                            <h2>Jagermeister 750 mL</h2>
+                        </div>
+                        <button class="producto-carrito-quitar" type="button">
+                            Quitar
+                        </button>
+                        <div class="producto-carrito-cantidad">
+                            <button type="button">-</button>
+                            <span>1</span>
+                            <button type="button">+</button>
+                        </div>
+                        <p class="producto-carrito-puntos">
+                            14.000
+                        </p>
+                    </article>
+                </section>
+                <section class="resumen-carrito">
+                    <div class="total-carrito">
+                        <span>Total de puntos </span>
+                        <span>14.000</span>
                     </div>
-                    <button class="producto-carrito-quitar" type="button">
-                        Quitar
-                    </button>
-                    <div class="producto-carrito-cantidad">
-                        <button type="button">-</button>
-                        <span>1</span>
-                        <button type="button">+</button>
-                    </div>
-                    <p class="producto-carrito-puntos">
-                        14.000
-                    </p>
-                </article>
-            </section>
-            <section class="resumen-carrito">
-                <div class="total-carrito">
-                    <span>Total de puntos   </span>
-                    <span>14.000</span>
-                </div>
-                <a class="boton-pagar" href="/checkout">
-                    Ir a pagar
-                </a>
-            </section>
-        </div>
-    </main>
+                    <a class="boton-pagar" href="/checkout">
+                        Ir a pagar
+                    </a>
+                </section>
+            </div>
+        </main>
 
-    <%- include("../partials/footer.ejs") %>
+        <%- include("../partials/footer.ejs") %>
+</body>
+
+
+
+</html>
