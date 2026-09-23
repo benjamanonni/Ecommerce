@@ -22,6 +22,9 @@ function mostrarRegistro(req,res){
 function mostrarLogin(req,res){
     res.render("pages/login.ejs");
 }
+function mostrarError404(req,res){
+    res.render("pages/error404.ejs");
+}
 //exportamos metodos 
 module.exports = {
     mostrarHome,
@@ -29,5 +32,6 @@ module.exports = {
     mostrarCarrito,
     mostrarCheckout,
     mostrarRegistro,
-    mostrarLogin
+    mostrarLogin,
+    mostrarError404
 };
