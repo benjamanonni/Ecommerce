@@ -79,10 +79,10 @@ function agregarProducto(req, res) {
     res.redirect("/products");
 }
 function mostrarError404(req, res) {
+    res.status(404);
     res.render("pages/error404.ejs");
 }
 function quitarCarrito(req, res) {
-    const carritoCompleto = [];
     if (req.session.cart === undefined) {
         req.session.cart = [];
     }
@@ -92,7 +92,7 @@ function quitarCarrito(req, res) {
     const productId = req.body.productId;
     //recorremos lista de productos
     for (let c = 0; c < carrito.length; c++) {
-        if (carrito[c].productId == productId) {
+        if (carrito[c].productId === productId) {
             carrito.splice(c, 1);//posicion a eleminar y cuantos elementos
             break;
         }
@@ -100,7 +100,6 @@ function quitarCarrito(req, res) {
     res.redirect("/cart");
 }
 function sumarProducto(req, res) {
-    const carritoCompleto = [];
     if (req.session.cart === undefined) {
         req.session.cart = [];
     }
@@ -117,7 +116,6 @@ function sumarProducto(req, res) {
     res.redirect("/cart");
 }
 function restarProducto(req, res) {
-    const carritoCompleto = [];
     if (req.session.cart === undefined) {
         req.session.cart = [];
     }
