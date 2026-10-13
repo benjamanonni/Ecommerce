@@ -567,8 +567,13 @@ PAGINA CARRITO
     font-weight: 300;
 }
 .producto-carrito-cantidad {
+    display: flex;
+    align-items: center;
     border: 1px solid black;
     border-radius: 15px;
+}
+.producto-carrito-quitar-form {
+    margin: 0;
 }
 .producto-carrito-cantidad button {
     border: none;
@@ -662,8 +667,12 @@ PAGINA CARRITO
         line-height: 1.2;
     }
     /* BOTÓN QUITAR */
-    .producto-carrito-quitar {
+    .producto-carrito-quitar-form {
         grid-area: quitar;
+        justify-self: start;
+        margin: 0;
+    }
+    .producto-carrito-quitar {
         padding: 8px 12px;
         white-space: nowrap;
     }
