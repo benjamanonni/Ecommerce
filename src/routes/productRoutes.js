@@ -1,5 +1,5 @@
-const {mostrarHome,mostrarProductos,mostrarCarrito,mostrarCheckout,mostrarRegistro,mostrarLogin,mostrarError404,agregarProducto,quitarProducto,sumarProducto,restarProducto, quitarCarrito} = require("../controladores/productController");
-const productos = require("../modelos/productModel");
+const {mostrarHome,mostrarProductos,mostrarCarrito,mostrarCheckout,mostrarRegistro,mostrarLogin,mostrarError404,agregarProducto,sumarProducto,restarProducto, quitarCarrito} = require("../controladores/productController");
+
 const express = require("express");
 //creamos un objeto routes para manejar rutas
 const router = express.Router();
