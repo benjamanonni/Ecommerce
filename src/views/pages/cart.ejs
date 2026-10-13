@@ -23,42 +23,44 @@
                     <a href="/">← Volver al listado</a>
                 </nav>
                 <h1>Productos en tu carrito</h1>
-
                 <section class="productos-carrito">
-                    <article class="producto-carrito">
-                        <img class="producto-carrito-imagen" src="/imagenesProductCard/imagenesJagger/jagger2.png"
-                            alt="Foto de Jagermeister">
-                        <div class="producto-carrito-info">
-                            <h2>Jagermeister 750 mL</h2>
-                        </div>
-                        <button class="producto-carrito-quitar" type="button">
-                            Quitar
-                        </button>
-                        <div class="producto-carrito-cantidad">
-                            <button type="button">-</button>
-                            <span>1</span>
-                            <button type="button">+</button>
-                        </div>
-                        <p class="producto-carrito-puntos">
-                            14.000
-                        </p>
-                    </article>
-                </section>
-                <section class="resumen-carrito">
-                    <div class="total-carrito">
-                        <span>Total de puntos </span>
-                        <span>14.000</span>
-                    </div>
-                    <a class="boton-pagar" href="/checkout">
-                        Ir a pagar
-                    </a>
+                    <% if (carrito.length===0) { %>
+                        <h2>Carrito vacío</h2>
+                        <a class="boton-pagar" href="/">
+                            Volver al inicio
+                        </a>
+                        <% } %>
+                            <% for (let i=0; i < carrito.length; i++) { %>
+                                <article class="producto-carrito">
+                                    <img class="producto-carrito-imagen" src="<%= carrito[i].imagen %>"
+                                        alt="<%= carrito[i].nombre %>">
+                                    <div class="producto-carrito-info">
+                                        <h2><%= carrito[i].nombre %></h2>
+                                    </div>
+                                    <form class="producto-carrito-quitar-form" action="/cart/quitar" method="post">
+                                        <input type="hidden" name="productId" value="<%= carrito[i].id %>">
+                                        <button class="producto-carrito-quitar" type="submit">Quitar</button>
+                                    </form>
+                                    <div class="producto-carrito-cantidad">
+                                        <form action="/cart/sumar" method="post">
+                                            <input type="hidden" name="productId" value="<%= carrito[i].id %>">
+                                            <button type="submit" aria-label="Sumar una unidad">+</button>
+                                        </form>
+                                        <span><%= carrito[i].quantity %></span>
+                                        <form action="/cart/restar" method="post">
+                                            <input type="hidden" name="productId" value="<%= carrito[i].id %>">
+                                            <button type="submit" aria-label="Restar una unidad">−</button>
+                                        </form>
+                                    </div>
+                                    <p class="producto-carrito-puntos">Precio: <%= carrito[i].precio %></p>
+                                </article>
+                                <% } %>
+                                <p class="producto-carrito-puntos">El total es: <%=total%></p>
                 </section>
             </div>
         </main>
 
         <%- include("../partials/footer.ejs") %>
 </body>
-
-
 
 </html>
