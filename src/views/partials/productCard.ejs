@@ -1,46 +1,10 @@
-<section class="products-cards">
 
     <article class="product-card">
-        <a href="/products">
-            <img src="/imagenesProductCard/imagenesJagger/jagger2.png" alt="Jagger">
+        <a href="/products/<%= producto.id %>">
+            <img src="<%=producto.imagen%>" alt="<%=producto.nombre%>">
             <div class="product-info">
-            <h3>Jagger</h3>
-            <p>1200 puntos</p>
+            <h3><%=producto.nombre%></h3>
+            <p><%=producto.precio%></p>
         </div>
         </a>
     </article>
-
-    <article class="product-card">
-        <a href="#">
-            <img src="/imagenesProductCard/vacio.png" alt="Producto sin imagen">
-            <div class="product-info">
-            <h3>Nombre del producto
-                o del servicio
-            </h3>
-            <p>XXX.XXX</p>
-        </div>
-        </a>
-    </article>
-    <article class="product-card">
-        <a href="#">
-            <img src="/imagenesProductCard/vacio.png" alt="Producto sin imagen">
-            <div class="product-info">
-            <h3>Nombre del producto
-                o del servicio
-            </h3>
-            <p>XXX.XXX</p>
-        </div>
-        </a>
-    </article>
-    <article class="product-card">
-        <a href="#">
-            <img src="/imagenesProductCard/vacio.png" alt="Producto sin imagen">
-            <div class="product-info">
-            <h3>Nombre del producto
-                o del servicio
-            </h3>
-            <p>XXX.XXX</p>
-        </div>
-        </a>
-    </article>
-</section>

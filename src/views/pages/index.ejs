@@ -1,34 +1,39 @@
+<!DOCTYPE html>
 
-  <!DOCTYPE html> 
+<html lang="es">
 
-<html lang="es"> 
+<head>
 
-<head> 
+    <meta charset="UTF-8">
 
-    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="/css/styles.css">
 
-    <link rel="stylesheet" href="/css/styles.css"> 
+    <title>Mi Ecommerce</title>
 
-    <title>Mi Ecommerce</title> 
+</head>
 
-</head> 
-
-<body> 
+<body>
     <%- include("../partials/headerHome.ejs") %>
-<main class="index">
-<%- include("../partials/categoryBar.ejs") %>
-<%- include("../partials/productHero.ejs") %>
-<h2>Te puede interesar</h2>
-<%- include("../partials/productCard.ejs") %>
-<h2>Lo mas pedido</h2>
-<%- include("../partials/productCard.ejs") %>
-<%- include("../partials/categoryBar.ejs") %>
-</main>
- <%- include("../partials/footer.ejs") %>
-</body> 
+        <main class="index">
+            <%- include("../partials/categoryBar.ejs") %>
+                <%- include("../partials/productHero.ejs") %>
+                    <h2>Te puede interesar</h2>
+                    <!--recibe el array de productos--->
+                    <% for (let i=0; i < productos.length; i++) { %>
+                        <%- include("../partials/productCard.ejs", { producto: productos[i] }) %>
+                            <% } %>
+                    <h2>Lo mas pedido</h2>
+                    <!--recibe el array de productos--->
+                    <% for (let i=0; i < productos.length; i++) { %>
+                        <%- include("../partials/productCard.ejs", { producto: productos[i] }) %>
+                                    <% } %>
+                    <%- include("../partials/categoryBar.ejs") %>
+        </main>
+        <%- include("../partials/footer.ejs") %>
+</body>
 
- 
 
-</html> 
+
+</html>
