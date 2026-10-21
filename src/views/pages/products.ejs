@@ -16,7 +16,9 @@
             <nav class="breadcrumb">
                 <a href="/">← Volver al listado</a>
                 <span>&gt;</span>
-                <span><%= producto.categoria %></span>
+                <span>
+                    <%= producto.categoria %>
+                </span>
             </nav>
             <section class="product-details">
                 <h1>
@@ -25,26 +27,26 @@
                 <div class="product-gallery">
                     <div class="miniaturas">
                         <a href="#">
-                            <img src="/imagenesProductCard/imagenesJagger/jagger3.png"
-                                alt="<%=producto.nombre%>"
+                            <img src="<%=producto.imagenTerciaria%>" alt="<%=producto.nombre%>">
                         </a>
                         <a href="#">
-                            <img src="/imagenesProductCard/imagenesJagger/jagger4.png" alt="<%=producto.nombre%>">
+                            <img src="<%=producto.imagenSecundaria%>" alt="<%=producto.nombre%>">
                         </a>
                         <a href="#">
-                            <img src= "<%=producto.imagen%>"  alt="imagen de jagger principal">
+                            <img src="<%=producto.imagenPrimaria%>" alt="<%=producto.nombre%>">
                         </a>
                     </div>
                     <a href="#">
-                        <img class="imagen-principal" src= "<%=producto.imagen%>"
-                            alt="<%=producto.nombre%>"
-                            
+                        <img class="imagen-principal" src="<%=producto.imagenPrimaria%>" alt="<%=producto.nombre%>">
+
                     </a>
 
                 </div>
                 <article class="product-detail-info">
                     <p class="product-price">
-                        <span class="product-points"><%=producto.precio%></span>
+                        <span class="product-points">
+                            <%=producto.precio%>
+                        </span>
                         <span class="product-points-label">PUNTOS</span>
                     </p>
                     <p>
@@ -52,7 +54,7 @@
                     </p>
                     <form action="/cart" method="post">
                         <!-- enviamos el id del producto -->
-                        <input type="hidden" name="productId" value= "<%=producto.id%>">
+                        <input type="hidden" name="productId" value="<%=producto.id%>">
                         <button class="boton" type="submit">
                             Agregar al carrito
                         </button>
@@ -64,8 +66,13 @@
             <h2 class="te-puede-interesar">
                 Tambien te puede interesar
             </h2>
-            <%- include("../partials/productCard.ejs") %>
-                <%- include("../partials/categoryBar.ejs") %>
+            <section class="products-cards">
+                <% for (let i=0; i < productosRelacionadosFinales.length; i++) { %>
+                    <%- include("../partials/productCard.ejs", { producto: productosRelacionadosFinales[i] }) %>
+                        <% } %>
+            </section>
+
+            <%- include("../partials/categoryBar.ejs") %>
         </main>
         <%- include("../partials/footer.ejs") %>
 

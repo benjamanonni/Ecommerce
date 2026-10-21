@@ -452,7 +452,7 @@ PRODUCT PAGES
     width: 85%;
 }
 .te-puede-interesar {
-    width: 85%;
+    display: flex;
 }
 .product-pages .products-cards {
     width: 85%;
