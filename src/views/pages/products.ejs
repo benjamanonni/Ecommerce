@@ -13,64 +13,46 @@
     <%- include("../partials/headerHome.ejs") %>
 
         <main class="product-pages">
-
             <nav class="breadcrumb">
                 <a href="/">← Volver al listado</a>
                 <span>&gt;</span>
-                <span>Alimentos</span>
+                <span><%= producto.categoria %></span>
             </nav>
-
             <section class="product-details">
-
                 <h1>
-                    Licor Jagermeister 750 ml
+                    <%= producto.nombre %>
                 </h1>
-
                 <div class="product-gallery">
-
                     <div class="miniaturas">
-
                         <a href="#">
                             <img src="/imagenesProductCard/imagenesJagger/jagger3.png"
-                                alt="imagen de jagger secundaria">
+                                alt="<%=producto.nombre%>"
                         </a>
-
                         <a href="#">
-                            <img src="/imagenesProductCard/imagenesJagger/jagger4.png" alt="imagen de jagger terciaria">
+                            <img src="/imagenesProductCard/imagenesJagger/jagger4.png" alt="<%=producto.nombre%>">
                         </a>
-
                         <a href="#">
-                            <img src="/imagenesProductCard/imagenesJagger/jagger2.png" alt="imagen de jagger principal">
+                            <img src= "<%=producto.imagen%>"  alt="imagen de jagger principal">
                         </a>
-
                     </div>
-
                     <a href="#">
-                        <img class="imagen-principal" src="/imagenesProductCard/imagenesJagger/jagger2.png"
-                            alt="imagen de jagger principal">
+                        <img class="imagen-principal" src= "<%=producto.imagen%>"
+                            alt="<%=producto.nombre%>"
+                            
                     </a>
 
                 </div>
-
                 <article class="product-detail-info">
-
                     <p class="product-price">
-                        <span class="product-points">14.000</span>
+                        <span class="product-points"><%=producto.precio%></span>
                         <span class="product-points-label">PUNTOS</span>
                     </p>
-
                     <p>
-                        Jägermeister es mucho más que un licor; es un icono global de la cultura nocturna
-                        y la tradición alemana. Elaborado con una receta secreta que se ha mantenido
-                        intacta desde su creación en 1934 por Curt Mast, este licor de hierbas
-                        (Kräuterlikör) combina maestría, misterio y un carácter inconfundible que se
-                        disfruta en todo el mundo. Cada botella es el resultado de un riguroso proceso
-                        de maceración y un envejecimiento de un año en barricas de roble, garantizando
-                        una calidad excepcional en cada trago.
+                        <%=producto.descripcion%>
                     </p>
                     <form action="/cart" method="post">
                         <!-- enviamos el id del producto -->
-                        <input type="hidden" name="productId" value="1">
+                        <input type="hidden" name="productId" value= "<%=producto.id%>">
                         <button class="boton" type="submit">
                             Agregar al carrito
                         </button>
@@ -82,13 +64,9 @@
             <h2 class="te-puede-interesar">
                 Tambien te puede interesar
             </h2>
-
             <%- include("../partials/productCard.ejs") %>
-
                 <%- include("../partials/categoryBar.ejs") %>
-
         </main>
-
         <%- include("../partials/footer.ejs") %>
 
 </body>
