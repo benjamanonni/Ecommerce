@@ -19,7 +19,23 @@ function mostrarHome(req, res) {
 }
 
 function mostrarProductos(req, res) {
-    res.render("pages/products.ejs");
+    let productoId = req.params.id;
+    let producto=null;
+
+    for(let c=0;c<productos.length;c++){
+        if(productoId===productos[c].id){
+            producto=productos[c];
+            break;
+        }
+    }
+    if(producto===null){
+        mostrarError404(req,res);
+        return;
+    }
+    //pasar producto elegido
+    res.render("pages/products.ejs",{
+        producto : producto
+    });
 }
 
 function mostrarCarrito(req, res) {
