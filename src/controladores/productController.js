@@ -2,13 +2,19 @@ const productos = require("../modelos/productModel");//array completo
 //mostrar home deberia retornar una lista con 5 objetos 
 function mostrarHome(req, res) {
 
-    const productosSeleccionados = [];
+    const productosSugeridos = [];
+    const productosMasPedidos = [];
     for(let c=0;c<=4&&c<productos.length;c++){
-        productosSeleccionados.push(productos[c]);
+        productosSugeridos.push(productos[c]);
     }
+    for(let c=0;c<=10&&c<productos.length;c++){
+        productosMasPedidos.push(productos[c]);
+    }
+
     res.render("pages/index.ejs",{
         //le enviamos lista al index 
-        productos : productosSeleccionados
+        productosSugeridos : productosSugeridos,
+        productosMasPedidos : productosMasPedidos ,
     });
 }
 
