@@ -4,44 +4,68 @@ function mostrarHome(req, res) {
 
     const productosSugeridos = [];
     const productosMasPedidos = [];
-    for(let c=0;c<=4&&c<productos.length;c++){
+    for (let c = 0; c <= 4 && c < productos.length; c++) {
         productosSugeridos.push(productos[c]);
     }
-    for(let c=0;c<=10&&c<productos.length;c++){
+    for (let c = 0; c <= 10 && c < productos.length; c++) {
         productosMasPedidos.push(productos[c]);
     }
 
-    res.render("pages/index.ejs",{
+    res.render("pages/index.ejs", {
         //le enviamos lista al index 
-        productosSugeridos : productosSugeridos,
-        productosMasPedidos : productosMasPedidos ,
+        productosSugeridos: productosSugeridos,
+        productosMasPedidos: productosMasPedidos,
     });
 }
 
 function mostrarProductos(req, res) {
     let productoId = req.params.id;
-    let producto=null;
+    let producto = null;
+    let productosRelacionados = [];
 
-    for(let c=0;c<productos.length;c++){
-        if(productoId===productos[c].id){
-            producto=productos[c];
+    for (let c = 0; c < productos.length; c++) {
+        if (productoId === productos[c].id) {
+            producto = productos[c];
             break;
         }
     }
-    if(producto===null){
-        mostrarError404(req,res);
+    if (producto === null) {
+        mostrarError404(req, res);
         return;
     }
+    //encontrar productos de misma categoria 
+    for (let c = 0; c < productos.length; c++) {
+        //no se guarda el mismo
+        if (producto.categoria === productos[c].categoria && productos[c].id != productoId) {
+            productosRelacionados.push(productos[c]);
+        }
+    }
+    let productosRelacionadosFinales = [];
+    //si hay mas de 4 que sea al azar
+    const copiaRelacionados = [...productosRelacionados];
+    const cantidad = Math.min(4, copiaRelacionados.length);
+
+
+    for (let i = 0; i < cantidad; i++) {
+        const indiceRandom =i + Math.floor(Math.random() * (copiaRelacionados.length - i));
+        const auxiliar = copiaRelacionados[i];
+        copiaRelacionados[i] = copiaRelacionados[indiceRandom];
+        copiaRelacionados[indiceRandom] = auxiliar;
+    }
+    for (let i = 0; i < cantidad; i++) {
+        productosRelacionadosFinales.push(copiaRelacionados[i]);
+    }
     //pasar producto elegido
-    res.render("pages/products.ejs",{
-        producto : producto
+    res.render("pages/products.ejs", {
+        producto: producto,
+        productosRelacionadosFinales: productosRelacionadosFinales
     });
 }
 
 function mostrarCarrito(req, res) {
     const carritoCompleto = [];
     let totalPrecioProducto = 0;
-    let totalPrecio=0;
+    let totalPrecio = 0;
     if (req.session.cart === undefined) {
         req.session.cart = [];
     }
@@ -58,8 +82,8 @@ function mostrarCarrito(req, res) {
                     imagen: productos[c].imagen,
                     quantity: carrito[i].quantity
                 });
-                totalPrecioProducto = productos[c].precio*carrito[i].quantity;
-                totalPrecio +=totalPrecioProducto;
+                totalPrecioProducto = productos[c].precio * carrito[i].quantity;
+                totalPrecio += totalPrecioProducto;
             }
         }
     }
@@ -107,7 +131,7 @@ function agregarProducto(req, res) {
     }
     console.log(productId);
     //si nunca le respondiera nunca terminaria el req 
-    res.redirect("/products");
+    res.redirect("/products/:id");
 }
 function mostrarError404(req, res) {
     res.status(404);
@@ -118,7 +142,7 @@ function quitarCarrito(req, res) {
         req.session.cart = [];
     }
     const carrito = req.session.cart;
-    
+
     //obtenemos el id1
     const productId = req.body.productId;
     //recorremos lista de productos
