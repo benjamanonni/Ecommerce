@@ -21,13 +21,13 @@
                 <%- include("../partials/productHero.ejs") %>
                     <h2>Te puede interesar</h2>
                     <!--recibe el array de productos--->
-                    <% for (let i=0; i < productos.length; i++) { %>
-                        <%- include("../partials/productCard.ejs", { producto: productos[i] }) %>
+                    <% for (let i=0; i < productosSugeridos.length; i++) { %>
+                        <%- include("../partials/productCard.ejs", { producto: productosSugeridos[i] }) %>
                             <% } %>
                     <h2>Lo mas pedido</h2>
                     <!--recibe el array de productos--->
-                    <% for (let i=0; i < productos.length; i++) { %>
-                        <%- include("../partials/productCard.ejs", { producto: productos[i] }) %>
+                    <% for (let i=0; i < productosMasPedidos.length; i++) { %>
+                        <%- include("../partials/productCard.ejs", { producto: productosMasPedidos[i] }) %>
                                     <% } %>
                     <%- include("../partials/categoryBar.ejs") %>
         </main>
