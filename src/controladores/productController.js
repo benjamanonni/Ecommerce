@@ -155,6 +155,10 @@ function mostrarError404(req, res) {
     res.status(404);
     res.render("pages/error404.ejs");
 }
+function mostrarError500(err,req,res,next){
+    res.status(500);
+    res.render("pages/error500.ejs");
+}
 function quitarCarrito(req, res) {
     if (req.session.cart === undefined) {
         req.session.cart = [];
@@ -234,5 +238,6 @@ module.exports = {
     quitarCarrito,
     sumarProducto,
     restarProducto,
-    mostrarCategoria
+    mostrarCategoria,
+    mostrarError500
 };

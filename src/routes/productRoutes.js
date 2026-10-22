@@ -1,4 +1,4 @@
-const {mostrarHome,mostrarProductos,mostrarCarrito,mostrarCheckout,mostrarRegistro,mostrarLogin,mostrarError404,agregarProducto,sumarProducto,restarProducto,mostrarCategoria, quitarCarrito} = require("../controladores/productController");
+const {mostrarHome,mostrarProductos,mostrarCarrito,mostrarCheckout,mostrarRegistro,mostrarLogin,mostrarError404,mostrarError500,agregarProducto,sumarProducto,restarProducto,mostrarCategoria, quitarCarrito} = require("../controladores/productController");
 
 const express = require("express");
 //creamos un objeto routes para manejar rutas
@@ -21,8 +21,10 @@ router.post("/cart/sumar",sumarProducto);
 //restar cantidad
 router.post("/cart/restar",restarProducto);
 
+router.use(mostrarError500);
 //si llega hasta aca es porque no existe esa ruta 
 router.use(mostrarError404);
+
 
 
 
