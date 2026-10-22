@@ -17,6 +17,18 @@ app.use(session({
     resave: false,//gurdar aun que no cambio 
     saveUninitialized: false //guardar sesion vacia 
 }));
+//cantidad de carrito
+app.use((req, res, next) => {
+    let cantidadCarrito = 0;
+    if (req.session.cart !== undefined) {
+        for (let i = 0; i < req.session.cart.length; i++) {
+            cantidadCarrito += req.session.cart[i].quantity;
+        }
+    }
+    //res.locals es un objeto que Express ofrece para guardar variables que después pueden usar las vistas EJS.
+    res.locals.cantidadCarrito = cantidadCarrito;
+    next();
+});
 app.use(router);
 const puerto = 3000;
 
