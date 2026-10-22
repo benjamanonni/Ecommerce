@@ -1,4 +1,4 @@
-const {mostrarHome,mostrarProductos,mostrarCarrito,mostrarCheckout,mostrarRegistro,mostrarLogin,mostrarError404,agregarProducto,sumarProducto,restarProducto, quitarCarrito} = require("../controladores/productController");
+const {mostrarHome,mostrarProductos,mostrarCarrito,mostrarCheckout,mostrarRegistro,mostrarLogin,mostrarError404,agregarProducto,sumarProducto,restarProducto,mostrarCategoria, quitarCarrito} = require("../controladores/productController");
 
 const express = require("express");
 //creamos un objeto routes para manejar rutas
@@ -9,6 +9,8 @@ router.get("/cart",mostrarCarrito);
 router.get("/checkout",mostrarCheckout);
 router.get("/register",mostrarRegistro);
 router.get("/login",mostrarLogin);
+//creamos categoria dinamica
+router.get("/categorias/:categoria",mostrarCategoria);
 
 //agregamos para recibir id del carrito
 router.post ("/cart",agregarProducto);

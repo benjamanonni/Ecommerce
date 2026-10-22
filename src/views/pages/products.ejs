@@ -67,6 +67,11 @@
                 Tambien te puede interesar
             </h2>
             <section class="products-cards">
+                <% if(productosRelacionadosFinales.length===0){ %>
+                    <p>
+                        Sin productos relacionados
+                    </p>
+                <%}%>
                 <% for (let i=0; i < productosRelacionadosFinales.length; i++) { %>
                     <%- include("../partials/productCard.ejs", { producto: productosRelacionadosFinales[i] }) %>
                         <% } %>
