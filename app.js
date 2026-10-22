@@ -3,6 +3,7 @@ const router = require("./src/routes/productRoutes");
 const app=express();
 app.use(express.urlencoded({ extended: true }))
 const session = require("express-session");
+const { mostrarError500 } = require("./src/controladores/productController");
 
 //app.set("nombreDeConfiguracion", "valor")
 app.set("view engine","ejs");
@@ -27,9 +28,11 @@ app.use((req, res, next) => {
     }
     //res.locals es un objeto que Express ofrece para guardar variables que después pueden usar las vistas EJS.
     res.locals.cantidadCarrito = cantidadCarrito;
+    //le avisa que termino su trabajo como middleware que vaya a controlador
     next();
 });
 app.use(router);
+app.use(mostrarError500);
 const puerto = 3000;
 
 //levantamos puerto
