@@ -5,6 +5,11 @@
             <div class="product-info">
             <h3><%=producto.nombre%></h3>
             <p><%=producto.precio%></p>
+            <%if(producto.stock<=0){%>
+                        <p class="sin-stock">
+                            Sin stock
+                        </p>
+                        <%}%>
         </div>
         </a>
     </article>

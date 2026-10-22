@@ -55,9 +55,13 @@
                     <form action="/cart" method="post">
                         <!-- enviamos el id del producto -->
                         <input type="hidden" name="productId" value="<%=producto.id%>">
-                        <button class="boton" type="submit">
-                            Agregar al carrito
-                        </button>
+                        <% if (producto.stock<=0){%>
+                            <button class="boton" disabled>Agregar al carrito</button>
+                            <% }else{%>
+                                <button class="boton" type="submit">
+                                    Agregar al carrito
+                                </button>
+                                <%}%> 
                     </form>
                 </article>
 
@@ -71,10 +75,10 @@
                     <p>
                         Sin productos relacionados
                     </p>
-                <%}%>
-                <% for (let i=0; i < productosRelacionadosFinales.length; i++) { %>
-                    <%- include("../partials/productCard.ejs", { producto: productosRelacionadosFinales[i] }) %>
-                        <% } %>
+                    <%}%>
+                        <% for (let i=0; i < productosRelacionadosFinales.length; i++) { %>
+                            <%- include("../partials/productCard.ejs", { producto: productosRelacionadosFinales[i] }) %>
+                                <% } %>
             </section>
 
             <%- include("../partials/categoryBar.ejs") %>
