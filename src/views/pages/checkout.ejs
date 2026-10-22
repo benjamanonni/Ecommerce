@@ -1,60 +1,23 @@
 
- <!DOCTYPE html> 
-
-<html lang="es"> 
-
-<head> 
-
-    <meta charset="UTF-8"> 
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-
-    <link rel="stylesheet" href="/css/styles.css"> 
-
-    <title>Mi Ecommerce</title> 
-
-</head> 
-
-<body>  
-    <%- include("../partials/headerHome.ejs") %>
-
 <main class="pagina-checkout">
-
     <div class="contenido-checkout">
-
         <nav class="breadcrumb">
             <a href="/cart">← Volver al carrito</a>
         </nav>
-
         <h1>Checkout</h1>
-
         <section class="resumen-checkout">
-
             <h2>Resumen de tu compra</h2>
-
             <div class="checkout-producto">
                 <span>Jagermeister 750 mL</span>
                 <span>14.000 puntos</span>
             </div>
-
             <div class="checkout-total">
                 <span>Total de puntos</span>
                 <strong>14.000</strong>
             </div>
-
             <button class="checkout-confirmar" type="button">
                 Confirmar compra
             </button>
-
         </section>
-
     </div>
-
 </main>
-
-<%- include("../partials/footer.ejs") %>
-</body> 
-
- 
-
-</html> 
