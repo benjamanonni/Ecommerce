@@ -189,6 +189,20 @@ function restarProducto(req, res) {
     }
     res.redirect("/cart");
 }
+function mostrarCategoria(req,res){
+    //guardamos categoria dinamica 
+    productoCategoria = req.params.categoria;
+    productosCategoria = [];
+    for(let c=0;c<productos.length;c++){
+        if(productoCategoria === productos[c].categoria){
+            productosCategoria.push(productos[c]);
+        }
+    }
+    res.render("pages/categories.ejs",{
+        categoria : productoCategoria,
+        productosCategoria : productosCategoria
+    })
+}
 //exportamos metodos 
 module.exports = {
     mostrarHome,
@@ -201,5 +215,6 @@ module.exports = {
     agregarProducto,
     quitarCarrito,
     sumarProducto,
-    restarProducto
+    restarProducto,
+    mostrarCategoria
 };

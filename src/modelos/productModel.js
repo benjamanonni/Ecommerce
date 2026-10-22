@@ -13,20 +13,9 @@ const productos = [
                         disfruta en todo el mundo. Cada botella es el resultado de un riguroso proceso
                         de maceración y un envejecimiento de un año en barricas de roble, garantizando
                 una calidad excepcional en cada trago.`,
-        categoria : "alimentos",
+        categoria : "bebidas",
 
     },
-    {
-    id: "2",
-    nombre: "Jagermeister Cold Brew Coffee 500 mL",
-    precio: 16000,
-    imagenPrimaria: "/imagenesProductCard/imagenesJagger/jagger3.png",
-    imagenSecundaria:"/imagenesProductCard/imagenesJagger/jagger2.png",
-    imagenTerciaria:"/imagenesProductCard/imagenesJagger/jagger4.png",
-    descripcion: `Licor de hierbas con notas de café, pensado para servirse frío. 
-                Mantiene el perfil herbal característico de Jägermeister combinado con aromas de café.`,
-    categoria: "bebidas"
-},
 {
     id: "3",
     nombre: "Galletitas de Chocolate 300 g",
@@ -35,14 +24,14 @@ const productos = [
     imagenSecundaria:"/imagenesProductCard/galletitas/galletitas-chocolate-secundaria.png",
     imagenTerciaria:"/imagenesProductCard/galletitas/galletitas-chocolate-terciaria.png",
     descripcion: "Galletitas crocantes con sabor a chocolate, ideales para acompañar desayunos y meriendas.",
-    categoria: "bebidas"
+    categoria: "alimentos"
 },
 {
     id: "4",
     nombre: "Papas Fritas Clásicas 150 g",
     precio: 2400,
     imagenPrimaria: "/imagenesProductCard/papas/papas-clasicas.png",
-    imagenSecundaria:"/imagenesProductCard/papas/papas-clasicas-secundarias.png",
+    imagenSecundaria:"/imagenesProductCard/papas/papas-clasicas-secundaria.png",
     imagenTerciaria:"/imagenesProductCard/papas/papas-clasicas-terciaria.png",
     descripcion: "Papas fritas crocantes con sal, pensadas para compartir o acompañar una comida.",
     categoria: "alimentos"
@@ -65,15 +54,15 @@ const productos = [
     imagenSecundaria:"/imagenesProductCard/cafe/cafe-molido-secundaria.png",
     imagenTerciaria:"/imagenesProductCard/cafe/cafe-molido-terciaria.png",
     descripcion: "Café molido de tueste medio, con aroma intenso y sabor equilibrado.",
-    categoria: "alimentos"
+    categoria: "bebidas"
 },
 {
     id: "7",
     nombre: "Mix de Frutos Secos 250 g",
     precio: 4800,
     imagenPrimaria: "/imagenesProductCard/frutos/frutos-secos.png",
-    imagenSecundaria:"/imagenesProductCard/frutos/frutos-secos.png-secundaria",
-    imagenTerciaria:"/imagenesProductCard/frutos/frutos-secos.png-terciaria",
+    imagenSecundaria:"/imagenesProductCard/frutos/frutos-secos.png-secundaria.png",
+    imagenTerciaria:"/imagenesProductCard/frutos/frutos-secos.png-terciaria.png",
     descripcion: "Mezcla de almendras, nueces y maní tostado.",
     categoria: "alimentos"
 },
@@ -82,8 +71,8 @@ const productos = [
     nombre: "Agua Tónica 1 L",
     precio: 1800,
     imagenPrimaria: "/imagenesProductCard/agua/agua-tonica.png",
-    imagenSecundaria:"/imagenesProductCard/agua/agua-tonica.png-secundaria",
-    imagenTerciaria:"/imagenesProductCard/agua/agua-tonica.png-terciaria",
+    imagenSecundaria:"/imagenesProductCard/agua/agua-tonica-secundaria.png",
+    imagenTerciaria:"/imagenesProductCard/agua/agua-tonica-terciaria.png",
     descripcion: "Bebida gasificada de sabor amargo y refrescante.",
     categoria: "bebidas"
 }
