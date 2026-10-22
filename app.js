@@ -1,6 +1,8 @@
 const express = require("express");
 const router = require("./src/routes/productRoutes");
+const expressLayouts = require('express-ejs-layouts');
 const app=express();
+
 app.use(express.urlencoded({ extended: true }))
 const session = require("express-session");
 
@@ -10,7 +12,10 @@ app.set("view engine","ejs");
 app.set("views", "./src/views");
 //configuramos asset como carpeta estatica
 app.use(express.static("assets"));
-
+//usamos layout para codigo repetido
+app.use(expressLayouts);
+//le decimos que layout usar
+app.set("layout", "layouts/main");
 //configuramos session
 app.use(session({
     secret: "secret", //firma de la cokie
