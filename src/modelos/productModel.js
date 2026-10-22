@@ -14,6 +14,7 @@ const productos = [
                         de maceración y un envejecimiento de un año en barricas de roble, garantizando
                 una calidad excepcional en cada trago.`,
         categoria : "bebidas",
+        stock : 10,
 
     },
 {
@@ -24,7 +25,8 @@ const productos = [
     imagenSecundaria:"/imagenesProductCard/galletitas/galletitas-chocolate-secundaria.png",
     imagenTerciaria:"/imagenesProductCard/galletitas/galletitas-chocolate-terciaria.png",
     descripcion: "Galletitas crocantes con sabor a chocolate, ideales para acompañar desayunos y meriendas.",
-    categoria: "alimentos"
+    categoria: "alimentos",
+    stock : 10,
 },
 {
     id: "4",
@@ -34,7 +36,8 @@ const productos = [
     imagenSecundaria:"/imagenesProductCard/papas/papas-clasicas-secundaria.png",
     imagenTerciaria:"/imagenesProductCard/papas/papas-clasicas-terciaria.png",
     descripcion: "Papas fritas crocantes con sal, pensadas para compartir o acompañar una comida.",
-    categoria: "alimentos"
+    categoria: "alimentos",
+    stock : 0,
 },
 {
     id: "5",
@@ -44,7 +47,8 @@ const productos = [
     imagenSecundaria:"/imagenesProductCard/chocolates/chocolate-almendras-secundaria.png",
     imagenTerciaria:"/imagenesProductCard/chocolates/chocolate-almendras-terciaria.png",
     descripcion: "Chocolate con leche combinado con almendras tostadas.",
-    categoria: "alimentos"
+    categoria: "alimentos",
+    stock : 10,
 },
 {
     id: "6",
@@ -54,7 +58,8 @@ const productos = [
     imagenSecundaria:"/imagenesProductCard/cafe/cafe-molido-secundaria.png",
     imagenTerciaria:"/imagenesProductCard/cafe/cafe-molido-terciaria.png",
     descripcion: "Café molido de tueste medio, con aroma intenso y sabor equilibrado.",
-    categoria: "bebidas"
+    categoria: "bebidas",
+    stock : 10,
 },
 {
     id: "7",
@@ -64,7 +69,8 @@ const productos = [
     imagenSecundaria:"/imagenesProductCard/frutos/frutos-secos.png-secundaria.png",
     imagenTerciaria:"/imagenesProductCard/frutos/frutos-secos.png-terciaria.png",
     descripcion: "Mezcla de almendras, nueces y maní tostado.",
-    categoria: "alimentos"
+    categoria: "alimentos",
+    stock : 10,
 },
 {
     id: "8",
@@ -74,7 +80,8 @@ const productos = [
     imagenSecundaria:"/imagenesProductCard/agua/agua-tonica-secundaria.png",
     imagenTerciaria:"/imagenesProductCard/agua/agua-tonica-terciaria.png",
     descripcion: "Bebida gasificada de sabor amargo y refrescante.",
-    categoria: "bebidas"
+    categoria: "bebidas",
+    stock : 10,
 }
 ];
 

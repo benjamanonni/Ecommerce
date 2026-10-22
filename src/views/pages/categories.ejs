@@ -12,14 +12,25 @@
     <h1>
         Productos de <%= categoria %>
     </h1>
-    <section class="products-cards"> 
-        
-    <% for (let c = 0; c < productosCategoria.length; c++) { %>
-        <%- include("../partials/productCard.ejs", {
-            producto: productosCategoria[c]
-        }) %>
-    <% } %>
-</section>
+    <% if (productosCategoria.length === 0) { %>
+
+    <p>No hay productos disponibles en esta categoría.</p>
+
+<% } else { %>
+
+    <section class="products-cards">
+
+        <% for (let c = 0; c < productosCategoria.length; c++) { %>
+
+            <%- include("../partials/productCard.ejs", {
+                producto: productosCategoria[c]
+            }) %>
+
+        <% } %>
+
+    </section>
+
+<% } %>
     <%- include("../partials/categoryBar.ejs") %>
 </main>
 <%- include("../partials/footer.ejs") %> 

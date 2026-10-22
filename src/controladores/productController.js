@@ -47,7 +47,7 @@ function mostrarProductos(req, res) {
 
 
     for (let i = 0; i < cantidad; i++) {
-        const indiceRandom =i + Math.floor(Math.random() * (copiaRelacionados.length - i));
+        const indiceRandom = i + Math.floor(Math.random() * (copiaRelacionados.length - i));
         const auxiliar = copiaRelacionados[i];
         copiaRelacionados[i] = copiaRelacionados[indiceRandom];
         copiaRelacionados[indiceRandom] = auxiliar;
@@ -118,6 +118,24 @@ function agregarProducto(req, res) {
             productoEncontrado = req.session.cart[i];
         }
     }
+    let productoReal = null;
+    //obtenemos producto
+    for (let c = 0; c < productos.length; c++) {
+        if (productos[c].id === productId) {
+            productoReal = productos[c];
+            break;
+        }
+    }
+    //si no existiera ese producto
+    if(productoReal===null){
+        mostrarError404(res,req);
+        return; 
+    }
+    //comprobamos su stock
+    if(productoReal.stock<=0){
+        res.redirect("/products/" + productId);
+        return;
+    }
     //si no lo encontro entonces lo añadimos 
     if (productoEncontrado === null) {
         req.session.cart.push({
@@ -131,7 +149,7 @@ function agregarProducto(req, res) {
     }
     console.log(productId);
     //si nunca le respondiera nunca terminaria el req 
-    res.redirect("/products/:id");
+    res.redirect("/products/" + productId);
 }
 function mostrarError404(req, res) {
     res.status(404);
@@ -189,18 +207,18 @@ function restarProducto(req, res) {
     }
     res.redirect("/cart");
 }
-function mostrarCategoria(req,res){
+function mostrarCategoria(req, res) {
     //guardamos categoria dinamica 
     productoCategoria = req.params.categoria;
     productosCategoria = [];
-    for(let c=0;c<productos.length;c++){
-        if(productoCategoria === productos[c].categoria){
+    for (let c = 0; c < productos.length; c++) {
+        if (productoCategoria === productos[c].categoria) {
             productosCategoria.push(productos[c]);
         }
     }
-    res.render("pages/categories.ejs",{
-        categoria : productoCategoria,
-        productosCategoria : productosCategoria
+    res.render("pages/categories.ejs", {
+        categoria: productoCategoria,
+        productosCategoria: productosCategoria
     })
 }
 //exportamos metodos 
