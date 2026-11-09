@@ -1,3 +1,4 @@
+
 const productos = require("../modelos/productModel");
 
 // PRODUCTOS SUGERIDOS
@@ -27,6 +28,28 @@ function buscarProductoPorId(productId) {
     }
     return null;
 }
+//BUSCAR TODOS LOS PRODUCTOS
+function mostrarTodosLosProductos() {
+    return productos;
+}
+//Ordenar productos por precio
+function ordenarProductosPorPrecio(criterio) {
+    const copiaProductos = [...productos];
+
+    if (criterio === "asc") {
+        copiaProductos.sort(function (a, b) {
+            return a.precio - b.precio;
+        });
+    }
+    //menor a mayor
+    if(criterio === "desc"){
+        copiaProductos.sort(function (a,b){
+            return b.precio-a.precio
+        });
+    }
+
+    return copiaProductos;
+}
 
 // PRODUCTOS RELACIONADOS
 function productosRelacionadosFinales(productoId) {
@@ -38,7 +61,7 @@ function productosRelacionadosFinales(productoId) {
     for (let c = 0; c < productos.length; c++) {
         if (
             producto.categoria === productos[c].categoria &&
-           Number(productos[c].id) !== productoId
+            Number(productos[c].id) !== productoId
         ) {
             productosRelacionados.push(productos[c]);
         }
@@ -83,5 +106,7 @@ module.exports = {
     obtenerProductosMasPedidos,
     buscarProductoPorId,
     productosRelacionadosFinales,
-    obtenerProductosPorCategoria
+    obtenerProductosPorCategoria,
+    mostrarTodosLosProductos,
+    ordenarProductosPorPrecio
 };
