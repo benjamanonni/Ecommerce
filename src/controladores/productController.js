@@ -32,7 +32,20 @@ function mostrarProductos(req, res) {
     res.render("pages/products.ejs", {
         producto: producto,
         productosRelacionadosFinales:
-            productosRelacionadosFinales
+            productosRelacionadosFinales,
+    });
+}
+function mostrarTodosLosProductos(req, res) {
+    let productos = productsService.mostrarTodosLosProductos();
+    const criterio = req.query.sort;
+    if (criterio === "asc" || criterio === "desc") {
+        productos =
+            productsService.ordenarProductosPorPrecio(
+                criterio
+            );
+    }
+    res.render("pages/productlists.ejs", {
+        productos: productos
     });
 }
 
@@ -169,5 +182,6 @@ module.exports = {
     quitarCarrito,
     sumarProducto,
     restarProducto,
-    mostrarCategoria
+    mostrarCategoria,
+    mostrarTodosLosProductos
 };

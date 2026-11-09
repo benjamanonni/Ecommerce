@@ -1,10 +1,12 @@
-const {mostrarHome,mostrarProductos,mostrarCarrito,mostrarCheckout,mostrarRegistro,mostrarLogin,mostrarError404,agregarProducto,sumarProducto,restarProducto,mostrarCategoria, quitarCarrito} = require("../controladores/productController");
+const {mostrarHome,mostrarProductos,mostrarCarrito,mostrarCheckout,mostrarRegistro,mostrarLogin,mostrarError404,agregarProducto,sumarProducto,restarProducto,mostrarCategoria, quitarCarrito,mostrarTodosLosProductos} = require("../controladores/productController");
 
 const express = require("express");
 //creamos un objeto routes para manejar rutas
 const router = express.Router();
 router.get("/",mostrarHome);
 router.get("/products/:id",mostrarProductos);
+//mostrar todos los productos
+router.get("/products",mostrarTodosLosProductos);
 router.get("/cart",mostrarCarrito);
 router.get("/checkout",mostrarCheckout);
 router.get("/register",mostrarRegistro);
