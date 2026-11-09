@@ -21,7 +21,7 @@ function obtenerProductosMasPedidos() {
 // BUSCAR PRODUCTO POR ID
 function buscarProductoPorId(productId) {
     for (let c = 0; c < productos.length; c++) {
-        if (productos[c].id === productId) {
+        if (Number(productos[c].id) === productId) {
             return productos[c];
         }
     }
@@ -38,7 +38,7 @@ function productosRelacionadosFinales(productoId) {
     for (let c = 0; c < productos.length; c++) {
         if (
             producto.categoria === productos[c].categoria &&
-            productos[c].id !== productoId
+           Number(productos[c].id) !== productoId
         ) {
             productosRelacionados.push(productos[c]);
         }

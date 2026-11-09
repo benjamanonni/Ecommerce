@@ -1,5 +1,6 @@
 const productsService = require("../services/productsService");
 const cartService = require("../services/cartService");
+const normalizarId = require("../middlewares/normalizeId");
 
 function mostrarHome(req, res) {
     const productosSugeridos =
@@ -14,10 +15,11 @@ function mostrarHome(req, res) {
 
 function mostrarProductos(req, res) {
     const productoId = req.params.id;
-    const producto =
-        productsService.buscarProductoPorId(
-            productoId
-        );
+    const idNormalizado= normalizarId(productoId);
+    if(idNormalizado===null){
+        return res.status(400).send("id invalido");
+    }
+    const producto =productsService.buscarProductoPorId(idNormalizado);
     // Si el producto no existe
     if (producto === null) {
         mostrarError404(req, res);
@@ -25,7 +27,7 @@ function mostrarProductos(req, res) {
     }
     const productosRelacionadosFinales =
         productsService.productosRelacionadosFinales(
-            productoId
+            idNormalizado
         );
     res.render("pages/products.ejs", {
         producto: producto,
