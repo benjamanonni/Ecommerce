@@ -22,7 +22,7 @@ function obtenerProductosMasPedidos() {
 // BUSCAR PRODUCTO POR ID
 function buscarProductoPorId(productId) {
     for (let c = 0; c < productos.length; c++) {
-        if (Number(productos[c].id) === productId) {
+        if (Number(productos[c].id) === Number(productId)) {
             return productos[c];
         }
     }
