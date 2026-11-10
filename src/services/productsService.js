@@ -100,6 +100,17 @@ function obtenerProductosPorCategoria(categoria) {
     }
     return productosCategoria;
 }
+// BUSCAR PRODUCTO POR NOMBRE
+function buscarProductoPorNombre(nombre){
+    console.log(nombre)
+    let productosEncontrados = []
+    for(let c=0;c<productos.length;c++){
+        if (productos[c].nombre.toLowerCase().includes(nombre.toLowerCase())) {
+            productosEncontrados.push(productos[c]);
+        }
+    }
+    return productosEncontrados;
+}
 
 module.exports = {
     obtenerProductosSugeridos,
@@ -108,5 +119,6 @@ module.exports = {
     productosRelacionadosFinales,
     obtenerProductosPorCategoria,
     mostrarTodosLosProductos,
-    ordenarProductosPorPrecio
+    ordenarProductosPorPrecio,
+    buscarProductoPorNombre
 };
