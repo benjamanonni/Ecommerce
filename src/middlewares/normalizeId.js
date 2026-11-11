@@ -1,4 +1,5 @@
 const productsService = require("../services/productsService");
+
 function normalizarId(id) {
     if (/[^0-9]/.test(id)) {
         return null;
@@ -8,9 +9,6 @@ function normalizarId(id) {
 }
 function verificarIdEnBase(id){
     const producto = productsService.buscarProductoPorId(id);
-    if(producto===undefined){
-        return null;
-    }
     return producto;
 }
 function verificarId(req,res,next){
@@ -22,8 +20,7 @@ function verificarId(req,res,next){
     }
     const producto = verificarIdEnBase(id);
     if(producto===null){
-         mostrarError404(req, res);
-                return;
+        return  res.status(404).send("no existe ese producto");
     }
     req.producto = producto;
     next();
