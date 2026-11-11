@@ -14,21 +14,8 @@ function mostrarHome(req, res) {
 }
 
 function mostrarProductos(req, res) {
-    const productoId = req.params.id;
-    const idNormalizado= normalizarId(productoId);
-    if(idNormalizado===null){
-        return res.status(400).send("id invalido");
-    }
-    const producto =productsService.buscarProductoPorId(idNormalizado);
-    // Si el producto no existe
-    if (producto === null) {
-        mostrarError404(req, res);
-        return;
-    }
-    const productosRelacionadosFinales =
-        productsService.productosRelacionadosFinales(
-            idNormalizado
-        );
+    const producto = req.producto;
+    const productosRelacionadosFinales = productsService.productosRelacionadosFinales(producto.id);
     res.render("pages/products.ejs", {
         producto: producto,
         productosRelacionadosFinales:
@@ -172,7 +159,7 @@ function mostrarCategoria(req, res) {
 //controler de busqueda
 function buscarProductoPorNombre(req,res){
     const nombreProductoBuscar = req.query.query;
-    productos= productsService.buscarProductoPorNombre(nombreProductoBuscar);
+    const productos= productsService.buscarProductoPorNombre(nombreProductoBuscar);
     res.render("pages/productlists.ejs", {
     productos: productos
 });

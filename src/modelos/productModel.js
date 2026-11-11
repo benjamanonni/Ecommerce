@@ -110,7 +110,7 @@ function buscarProductoPorCategoria(categoria){
         select *
         from products
         where categoria = ?
-    `).get(categoria);
+    `).all(categoria);
     return productos;
 }
 //buscar producto por nombre
@@ -119,7 +119,7 @@ function buscarProductosPorNombre(nombre){
         select *
         from products
         where nombre like ?
-    `).get(nombre);
+    `).all(nombre);
     return productos;
 }
 
