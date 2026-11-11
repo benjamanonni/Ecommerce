@@ -172,8 +172,6 @@ function mostrarCategoria(req, res) {
 //controler de busqueda
 function buscarProductoPorNombre(req,res){
     const nombreProductoBuscar = req.query.query;
-    console.log(nombreProductoBuscar)
-    let productos=[];
     productos= productsService.buscarProductoPorNombre(nombreProductoBuscar);
     res.render("pages/productlists.ejs", {
     productos: productos

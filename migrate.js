@@ -19,5 +19,5 @@ function agregarProducto(){
     INSERT OR IGNORE INTO products (nombre,precio,imagenPrimaria,imagenSecundaria,ImagenTerciaria,descripcion,categoria,stock)
     VALUES (?,?,?,?,?,?,?,?)
 `);
-
 agregarProducto();
+
