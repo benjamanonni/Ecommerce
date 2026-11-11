@@ -1,6 +1,5 @@
 const productsService = require("../services/productsService");
 const cartService = require("../services/cartService");
-const normalizarId = require("../middlewares/normalizeId");
 
 function mostrarHome(req, res) {
     const productosSugeridos =

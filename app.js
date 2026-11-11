@@ -1,10 +1,17 @@
 const express = require("express");
 const router = require("./src/routes/productRoutes");
+const http = require("http");
+const WebSocket = require("ws");
 const expressLayouts = require('express-ejs-layouts');
 const app=express();
 
 app.use(express.urlencoded({ extended: true }))
 const session = require("express-session");
+
+//le pasamos al server el app
+const server = http.createServer(app);
+//crea una instancia del servidor WebSocket.
+const wss = new WebSocket.Server({ server });
 
 //app.set("nombreDeConfiguracion", "valor")
 app.set("view engine","ejs");
@@ -36,6 +43,15 @@ app.use((req, res, next) => {
 });
 app.use(router);
 const puerto = 3000;
+//cada vez que se conectan de forma ws envia notifiacion a consola
+wss.on("connection", (ws) => {
+    console.log("Cliente conectado");
+
+    ws.on("close", () => {
+        console.log("Cliente desconectado");
+        console.log("Conexiones activas:", wss.clients.size);
+    });
+});
 
 //levantamos puerto
-app.listen(puerto,()=>console.log("levantando puerto 3000 "));
+server.listen(puerto,()=>console.log("levantando puerto 3000 "));

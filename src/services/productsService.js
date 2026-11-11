@@ -95,17 +95,13 @@ function productosRelacionadosFinales(productoId) {
 // PRODUCTOS POR CATEGORÍA
 function obtenerProductosPorCategoria(categoria) {
     const productosCategoria = productModel.buscarProductoPorCategoria(categoria);
-    if(productosCategoria===undefined){
-        return [];
-    }
+  
     return productosCategoria;
 }
 // BUSCAR PRODUCTO POR NOMBRE
 function buscarProductoPorNombre(nombre){
     let productosEncontrados = productModel.buscarProductosPorNombre(nombre.toLowerCase());
-    if(productosEncontrados===undefined){
-        return [];
-    }
+  
     return productosEncontrados;
 }
 
