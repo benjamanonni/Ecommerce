@@ -1,40 +1,41 @@
-
-const productos = require("../modelos/productModel");
-
+const productModel = require("../modelos/productModel");
 // PRODUCTOS SUGERIDOS
 function obtenerProductosSugeridos() {
-    const listaSugeridos = [];
-    for (let c = 0; c < 5 && c < productos.length; c++) {
-        listaSugeridos.push(productos[c]);
+    const lista = productModel.obtenerTodosLosProductos();
+    let listaSugeridos = []
+    for (let c = 0; c < 5 && c < lista.length; c++) {
+        listaSugeridos.push(lista[c]);
     }
     return listaSugeridos;
 }
 
 // PRODUCTOS MÁS PEDIDOS
 function obtenerProductosMasPedidos() {
-    const listaMasPedidos = [];
-    for (let c = 0; c < 10 && c < productos.length; c++) {
-        listaMasPedidos.push(productos[c]);
+    const lista = productModel.obtenerTodosLosProductos();
+    let listaMasPedidos = []
+    for (let c = 0; c < 10 && c < lista.length; c++) {
+        listaMasPedidos.push(lista[c]);
     }
     return listaMasPedidos;
 }
 
 // BUSCAR PRODUCTO POR ID
 function buscarProductoPorId(productId) {
-    for (let c = 0; c < productos.length; c++) {
-        if (Number(productos[c].id) === Number(productId)) {
-            return productos[c];
-        }
+    const producto = productModel.buscarProductoPorId(productId);
+    if (producto === undefined) {
+        return null;
     }
-    return null;
+    return producto
 }
 //BUSCAR TODOS LOS PRODUCTOS
 function mostrarTodosLosProductos() {
+    const productos = productModel.obtenerTodosLosProductos();
     return productos;
 }
+
 //Ordenar productos por precio
 function ordenarProductosPorPrecio(criterio) {
-    const copiaProductos = [...productos];
+    const copiaProductos = productModel.obtenerTodosLosProductos();
 
     if (criterio === "asc") {
         copiaProductos.sort(function (a, b) {
@@ -53,61 +54,57 @@ function ordenarProductosPorPrecio(criterio) {
 
 // PRODUCTOS RELACIONADOS
 function productosRelacionadosFinales(productoId) {
+    // 1. Buscar el producto original
     const producto = buscarProductoPorId(productoId);
     if (producto === null) {
         return [];
     }
-    const productosRelacionados = [];
-    for (let c = 0; c < productos.length; c++) {
-        if (
-            producto.categoria === productos[c].categoria &&
-            Number(productos[c].id) !== productoId
-        ) {
-            productosRelacionados.push(productos[c]);
+    // 2. Obtener los productos desde SQLite
+    const productos = productModel.obtenerTodosLosProductos();
+    // 3. Buscar productos de la misma categoría
+    const relacionados = [];
+    for (let i = 0; i < productos.length; i++) {
+        const candidato = productos[i];
+        const mismaCategoria =
+            candidato.categoria === producto.categoria;
+        const distintoProducto =
+            Number(candidato.id) !== Number(producto.id);
+        if (mismaCategoria && distintoProducto) {
+            relacionados.push(candidato);
         }
     }
-    const copiaRelacionados = [...productosRelacionados];
-    const cantidad =
-        Math.min(4, copiaRelacionados.length);
+    // 4. Determinar cuántos vamos a recomendar
+    const cantidad = Math.min(4, relacionados.length);
+    // 5. Seleccionar aleatoriamente sin repetir
     for (let i = 0; i < cantidad; i++) {
-        const indiceRandom =
+        const indiceAleatorio =
             i + Math.floor(
-                Math.random() *
-                (copiaRelacionados.length - i)
+                Math.random() * (relacionados.length - i)
             );
-        const auxiliar =
-            copiaRelacionados[i];
-        copiaRelacionados[i] =
-            copiaRelacionados[indiceRandom];
-        copiaRelacionados[indiceRandom] =
-            auxiliar;
+        const auxiliar = relacionados[i];
+        relacionados[i] = relacionados[indiceAleatorio];
+        relacionados[indiceAleatorio] = auxiliar;
     }
-
+    // 6. Construir el resultado
     const listaFinal = [];
     for (let i = 0; i < cantidad; i++) {
-        listaFinal.push(copiaRelacionados[i]);
+        listaFinal.push(relacionados[i]);
     }
     return listaFinal;
 }
-
 // PRODUCTOS POR CATEGORÍA
 function obtenerProductosPorCategoria(categoria) {
-    const productosCategoria = [];
-    for (let c = 0; c < productos.length; c++) {
-        if (categoria === productos[c].categoria) {
-            productosCategoria.push(productos[c]);
-        }
+    const productosCategoria = productModel.buscarProductoPorCategoria(categoria);
+    if(productosCategoria===undefined){
+        return [];
     }
     return productosCategoria;
 }
 // BUSCAR PRODUCTO POR NOMBRE
 function buscarProductoPorNombre(nombre){
-    console.log(nombre)
-    let productosEncontrados = []
-    for(let c=0;c<productos.length;c++){
-        if (productos[c].nombre.toLowerCase().includes(nombre.toLowerCase())) {
-            productosEncontrados.push(productos[c]);
-        }
+    let productosEncontrados = productModel.buscarProductosPorNombre(nombre.toLowerCase());
+    if(productosEncontrados===undefined){
+        return [];
     }
     return productosEncontrados;
 }
