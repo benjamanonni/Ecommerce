@@ -781,3 +781,10 @@ AGREGAR REGISTER Y INICIAR SESION A HOME
     cursor: not-allowed;
     opacity: 0.5;
 }
+.estado-conectado {
+    color: green;
+}
+
+.estado-desconectado {
+    color: red;
+}
