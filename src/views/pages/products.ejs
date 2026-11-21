@@ -39,7 +39,7 @@
                     <p>
                         <%=producto.descripcion%>
                     </p>
-                    <form action="/cart" method="post">
+                    <form action="/cart" method="post" class="form-agregar-carrito">
                         <!-- enviamos el id del producto -->
                         <input type="hidden" name="productId" value="<%=producto.id%>">
                         <% if (producto.stock<=0){%>

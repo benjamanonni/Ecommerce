@@ -1,6 +1,6 @@
 const productsService = require("../services/productsService");
 const cartService = require("../services/cartService");
-
+const websocketService = require("../services/websocketService");
 function mostrarHome(req, res) {
     const productosSugeridos =
         productsService.obtenerProductosSugeridos();
@@ -75,12 +75,25 @@ function agregarProducto(req, res) {
         mostrarError404(req, res);
         return;
     }
+    if (resultado === "OK") {
+    const cantidad = cartService.calcularCantidadCarrito(req.session);
+    websocketService.enviarASesion(
+        req.sessionID,
+        JSON.stringify({
+            type: "cartUpdated",
+            payload: {
+                cantidad: cantidad
+            }
+        })
+    );
+}
     // Producto sin stock
     if (resultado === "SIN_STOCK") {
         res.redirect(
             "/products/" + productId
         );
         return;
+        
     }
     // Producto agregado correctamente
     res.redirect(
@@ -109,32 +122,58 @@ function mostrarError500(
 function quitarCarrito(req, res) {
     const productId =
         req.body.productId;
-    cartService.quitarCarrito(
-        req.session,
-        productId
+    const resultado = cartService.quitarCarrito(req.session, productId);
+    if (resultado === "OK") {
+    const cantidad = cartService.calcularCantidadCarrito(req.session);
+    websocketService.enviarASesion(
+        req.sessionID,
+        JSON.stringify({
+            type: "cartUpdated",
+            payload: {
+                cantidad: cantidad
+            }
+        })
     );
+}
     res.redirect("/cart");
 }
 
 function sumarProducto(req, res) {
-    const productoId =
-        req.body.productId;
-    cartService.sumarProducto(
-        req.session,
-        productoId
+    const productoId =req.body.productId;
+    const resultado = cartService.sumarProducto(req.session, productoId);
+    if (resultado === "OK") {
+     const cantidad = cartService.calcularCantidadCarrito(req.session);
+
+    websocketService.enviarASesion(
+        req.sessionID,
+        JSON.stringify({
+            type: "cartUpdated",
+            payload: {
+                cantidad: cantidad
+            }
+        })
     );
+}
     res.redirect("/cart");
 }
 
 function restarProducto(req, res) {
-    const productoId =
-        req.body.productId;
+    const productoId =req.body.productId;
+    const resultado = cartService.restarProducto(req.session, productoId);
+    if (resultado === "OK") {
+     const cantidad = cartService.calcularCantidadCarrito(req.session);
 
-    cartService.restarProducto(
-        req.session,
-        productoId
+    websocketService.enviarASesion(
+        req.sessionID,
+        JSON.stringify({
+            type: "cartUpdated",
+            payload: {
+                cantidad: cantidad
+            }
+        })
     );
-
+}
+        
     res.redirect("/cart");
 }
 
