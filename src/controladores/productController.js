@@ -125,14 +125,11 @@ function quitarCarrito(req, res) {
     const resultado = cartService.quitarCarrito(req.session, productId);
     if (resultado === "OK") {
     const cantidad = cartService.calcularCantidadCarrito(req.session);
-    websocketService.enviarASesion(
+
+    websocketService.enviarEventoASesion(
         req.sessionID,
-        JSON.stringify({
-            type: "cartUpdated",
-            payload: {
-                cantidad: cantidad
-            }
-        })
+        "cartUpdated",
+        { cantidad: cantidad }
     );
 }
     res.redirect("/cart");
@@ -142,16 +139,12 @@ function sumarProducto(req, res) {
     const productoId =req.body.productId;
     const resultado = cartService.sumarProducto(req.session, productoId);
     if (resultado === "OK") {
-     const cantidad = cartService.calcularCantidadCarrito(req.session);
+    const cantidad = cartService.calcularCantidadCarrito(req.session);
 
-    websocketService.enviarASesion(
+    websocketService.enviarEventoASesion(
         req.sessionID,
-        JSON.stringify({
-            type: "cartUpdated",
-            payload: {
-                cantidad: cantidad
-            }
-        })
+        "cartUpdated",
+        { cantidad: cantidad }
     );
 }
     res.redirect("/cart");
@@ -160,17 +153,13 @@ function sumarProducto(req, res) {
 function restarProducto(req, res) {
     const productoId =req.body.productId;
     const resultado = cartService.restarProducto(req.session, productoId);
-    if (resultado === "OK") {
-     const cantidad = cartService.calcularCantidadCarrito(req.session);
+   if (resultado === "OK") {
+    const cantidad = cartService.calcularCantidadCarrito(req.session);
 
-    websocketService.enviarASesion(
+    websocketService.enviarEventoASesion(
         req.sessionID,
-        JSON.stringify({
-            type: "cartUpdated",
-            payload: {
-                cantidad: cantidad
-            }
-        })
+        "cartUpdated",
+        { cantidad: cantidad }
     );
 }
         
