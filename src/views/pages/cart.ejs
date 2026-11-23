@@ -1,46 +1,52 @@
+<main class="pagina-carrito">
+    <div class="contenido-carrito">
+        <nav class="breadcrumb">
+            <a href="/">← Volver al listado</a>
+        </nav>
+        <h1>Productos en tu carrito</h1>
+        <section class="productos-carrito">
+            <div id="lista-productos">
 
-        <main class="pagina-carrito">
-            <div class="contenido-carrito">
-                <nav class="breadcrumb">
-                    <a href="/">← Volver al listado</a>
-                </nav>
-                <h1>Productos en tu carrito</h1>
-                <section class="productos-carrito">
-                    <div id="lista-productos">
-
-                    <% if (carrito.length===0) { %>
-                        <h2>Carrito vacío</h2>
-                        <a class="boton-pagar" href="/">
-                            Volver al inicio
-                        </a>
-                        <% } %>
-                            <% for (let i=0; i < carrito.length; i++) { %>
-                                <article class="producto-carrito">
-                                    <img class="producto-carrito-imagen" src="<%= carrito[i].imagen %>"
-                                        alt="<%= carrito[i].nombre %>">
-                                    <div class="producto-carrito-info">
-                                        <h2><%= carrito[i].nombre %></h2>
-                                    </div>
-                                    <form class="producto-carrito-quitar-form" action="/cart/quitar" method="post">
+                <% if (carrito.length===0) { %>
+                    <h2>Carrito vacío</h2>
+                    <a class="boton-pagar" href="/">
+                        Volver al inicio
+                    </a>
+                    <% } %>
+                        <% for (let i=0; i < carrito.length; i++) { %>
+                            <article class="producto-carrito">
+                                <img class="producto-carrito-imagen" src="<%= carrito[i].imagen %>"
+                                    alt="<%= carrito[i].nombre %>">
+                                <div class="producto-carrito-info">
+                                    <h2>
+                                        <%= carrito[i].nombre %>
+                                    </h2>
+                                </div>
+                                <form class="producto-carrito-quitar-form" action="/cart/quitar" method="post">
+                                    <input type="hidden" name="productId" value="<%= carrito[i].id %>">
+                                    <button class="producto-carrito-quitar" type="submit">Quitar</button>
+                                </form>
+                                <div class="producto-carrito-cantidad">
+                                    <form action="/cart/sumar" method="post">
                                         <input type="hidden" name="productId" value="<%= carrito[i].id %>">
-                                        <button class="producto-carrito-quitar" type="submit">Quitar</button>
+                                        <button type="submit" aria-label="Sumar una unidad">+</button>
                                     </form>
-                                    <div class="producto-carrito-cantidad">
-                                        <form action="/cart/sumar" method="post">
-                                            <input type="hidden" name="productId" value="<%= carrito[i].id %>">
-                                            <button type="submit" aria-label="Sumar una unidad">+</button>
-                                        </form>
-                                        <span><%= carrito[i].quantity %></span>
-                                        <form action="/cart/restar" method="post">
-                                            <input type="hidden" name="productId" value="<%= carrito[i].id %>">
-                                            <button type="submit" aria-label="Restar una unidad">−</button>
-                                        </form>
-                                    </div>
-                                    <p class="producto-carrito-puntos">Precio: <%= carrito[i].precio %></p>
-                                </article>
-                                <% } %>
-                                                                       </div>
-                                <p class="producto-carrito-puntos">El total es: <%=total%></p>
-                </section>
+                                    <span>
+                                        <%= carrito[i].quantity %>
+                                    </span>
+                                    <form action="/cart/restar" method="post">
+                                        <input type="hidden" name="productId" value="<%= carrito[i].id %>">
+                                        <button type="submit" aria-label="Restar una unidad">−</button>
+                                    </form>
+                                </div>
+                                <p class="producto-carrito-puntos">Precio: <%= carrito[i].precio %>
+                                </p>
+                            </article>
+                            <% } %>
             </div>
-        </main>
+            <p class="producto-carrito-puntos">
+    El total es: $<span id="total-carrito"><%= total %></span>
+</p>
+        </section>
+    </div>
+</main>

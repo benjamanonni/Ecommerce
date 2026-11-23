@@ -19,16 +19,15 @@ socket.addEventListener("message", (event) => {
     const mensaje = JSON.parse(event.data);
 
     // 2. Comprobar que sea una actualización del carrito
-    if (mensaje.type === "cartUpdated") {
-        const cantidad = mensaje.payload.cantidad;
+   if (mensaje.type === "cartUpdated") {
+    const contador = document.querySelector(".header-carrito-cantidad");
 
-        // 3. Buscar el contador y actualizar su texto
-        const contador = document.querySelector(".header-carrito-cantidad");
-
-        if (contador) {
-            contador.textContent = cantidad;
-        }
+    if (contador) {
+        contador.textContent = mensaje.payload.cantidad;
     }
+
+    actualizarVistaCarrito();
+}    
 });
 const formularios = document.querySelectorAll(".form-agregar-carrito");
 
@@ -46,18 +45,64 @@ formularios.forEach((formulario) => {
     });
 });
 async function actualizarVistaCarrito() {
+    if (!document.querySelector("#lista-productos")) {
+        return;
+    }
+
     const respuesta = await fetch("/cart/datos");
+
     if (!respuesta.ok) {
-        console.error("No se pudo consultar el carrito");
+        console.error("Error al consultar el carrito");
         return;
     }
 
     const datos = await respuesta.json();
-    console.log("Carrito actualizado:", datos);
-}
-async function actualizarVistaCarrito() {
-    const respuesta = await fetch("/cart/datos");
-    const datos = await respuesta.json();
 
-    console.log("Carrito actualizado:", datos);
+    renderizarCarrito(datos);
 }
+
+function conectarWebSocket() {
+    const socket = new WebSocket("ws://localhost:3000");
+    const indicador = document.getElementById("estadoConexion");
+
+    socket.addEventListener("open", () => {
+        console.log("WebSocket conectado");
+
+        indicador.textContent = "Conectado";
+        indicador.classList.remove("estado-desconectado");
+        indicador.classList.add("estado-conectado");
+    });
+
+    socket.addEventListener("close", () => {
+        console.log("WebSocket desconectado");
+
+        indicador.textContent = "Desconectado";
+        indicador.classList.remove("estado-conectado");
+        indicador.classList.add("estado-desconectado");
+
+        setTimeout(() => {
+            conectarWebSocket();
+        }, 3000);
+    });
+
+    socket.addEventListener("message", (event) => {
+        const mensaje = JSON.parse(event.data);
+
+        if (mensaje.type === "cartUpdated") {
+            const contador = document.querySelector(
+                ".header-carrito-cantidad"
+            );
+
+            if (contador) {
+                contador.textContent = mensaje.payload.cantidad;
+            }
+
+            actualizarVistaCarrito();
+        }
+    });
+}
+
+// Iniciar la primera conexión
+conectarWebSocket();
+
+conectarWebSocket();
