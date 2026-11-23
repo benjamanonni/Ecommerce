@@ -1,4 +1,4 @@
-const {buscarProductoPorNombre,mostrarHome,mostrarProductos,mostrarCarrito,mostrarCheckout,mostrarRegistro,mostrarLogin,mostrarError404,agregarProducto,sumarProducto,restarProducto,mostrarCategoria, quitarCarrito,mostrarTodosLosProductos} = require("../controladores/productController");
+const {buscarProductoPorNombre,mostrarHome,mostrarProductos,mostrarCarrito,mostrarCheckout,mostrarRegistro,mostrarLogin,mostrarError404,agregarProducto,sumarProducto,restarProducto,mostrarCategoria, quitarCarrito,mostrarTodosLosProductos,obtenerDatosdeCarrito} = require("../controladores/productController");
 const verificarId= require("../middlewares/normalizeId");
 const express = require("express");
 //creamos un objeto routes para manejar rutas
@@ -8,6 +8,7 @@ router.get("/products/:id",verificarId,mostrarProductos);
 //mostrar todos los productos
 router.get("/products",mostrarTodosLosProductos);
 router.get("/cart",mostrarCarrito);
+router.get("/cart/datos",obtenerDatosdeCarrito)
 router.get("/checkout",mostrarCheckout);
 router.get("/register",mostrarRegistro);
 router.get("/login",mostrarLogin);

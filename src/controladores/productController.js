@@ -202,6 +202,20 @@ function buscarProductoPorNombre(req,res){
     productos: productos
 });
 }
+function obtenerDatosdeCarrito(req,res){
+    const carritoCompleto =
+        cartService.obtenerCarrito(
+            req.session
+        );
+    const totalPrecio =
+        cartService.calcularTotalPrecio(
+            req.session
+        );
+    res.json({
+        carrito: carritoCompleto,
+        total: totalPrecio
+    });
+}
 module.exports = {
     mostrarHome,
     mostrarProductos,
@@ -217,5 +231,6 @@ module.exports = {
     restarProducto,
     mostrarCategoria,
     mostrarTodosLosProductos,
-    buscarProductoPorNombre
+    buscarProductoPorNombre,
+    obtenerDatosdeCarrito
 };

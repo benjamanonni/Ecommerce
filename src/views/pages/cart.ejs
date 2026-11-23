@@ -6,6 +6,8 @@
                 </nav>
                 <h1>Productos en tu carrito</h1>
                 <section class="productos-carrito">
+                    <div id="lista-productos">
+
                     <% if (carrito.length===0) { %>
                         <h2>Carrito vacío</h2>
                         <a class="boton-pagar" href="/">
@@ -14,7 +16,7 @@
                         <% } %>
                             <% for (let i=0; i < carrito.length; i++) { %>
                                 <article class="producto-carrito">
-                                    <img class="producto-carrito-imagen" src="<%= carrito[i].imagenPrimaria %>"
+                                    <img class="producto-carrito-imagen" src="<%= carrito[i].imagen %>"
                                         alt="<%= carrito[i].nombre %>">
                                     <div class="producto-carrito-info">
                                         <h2><%= carrito[i].nombre %></h2>
@@ -37,6 +39,7 @@
                                     <p class="producto-carrito-puntos">Precio: <%= carrito[i].precio %></p>
                                 </article>
                                 <% } %>
+                                                                       </div>
                                 <p class="producto-carrito-puntos">El total es: <%=total%></p>
                 </section>
             </div>

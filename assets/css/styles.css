@@ -788,3 +788,9 @@ AGREGAR REGISTER Y INICIAR SESION A HOME
 .estado-desconectado {
     color: red;
 }
+#lista-productos {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}

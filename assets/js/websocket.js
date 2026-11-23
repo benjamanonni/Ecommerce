@@ -33,19 +33,31 @@ socket.addEventListener("message", (event) => {
 const formularios = document.querySelectorAll(".form-agregar-carrito");
 
 formularios.forEach((formulario) => {
-
     formulario.addEventListener("submit", async (event) => {
 
         event.preventDefault();
 
         const datos = new FormData(formulario);
-
         await fetch(formulario.action, {
             method: "POST",
             body: new URLSearchParams(datos)
         });
 
     });
-
 });
+async function actualizarVistaCarrito() {
+    const respuesta = await fetch("/cart/datos");
+    if (!respuesta.ok) {
+        console.error("No se pudo consultar el carrito");
+        return;
+    }
 
+    const datos = await respuesta.json();
+    console.log("Carrito actualizado:", datos);
+}
+async function actualizarVistaCarrito() {
+    const respuesta = await fetch("/cart/datos");
+    const datos = await respuesta.json();
+
+    console.log("Carrito actualizado:", datos);
+}

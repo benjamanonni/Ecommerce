@@ -17,7 +17,8 @@ function obtenerCarrito(session) {
                 nombre: producto.nombre,
                 precio: producto.precio,
                 imagen: producto.imagenPrimaria,
-                quantity: session.cart[i].quantity
+                quantity: session.cart[i].quantity,
+                subtotal: producto.precio * session.cart[i].quantity
             });
         }
     }
