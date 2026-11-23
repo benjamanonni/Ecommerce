@@ -58,16 +58,6 @@ app.use((req, res, next) => {
 app.use(router);
 const puerto = 3000;
 
-//cada vez que se conectan de forma ws envia notifiacion a consola
-wss.on("connection", (ws,request) => {
-    console.log("Cliente conectado");
-     ws.sessionID = request.sessionID;
-     console.log("ID de sesión:", request.sessionID);
-    ws.on("close", () => {
-        console.log("Cliente desconectado");
-        console.log("Conexiones activas:", wss.clients.size);
-    });
-});
 
 //levantamos puerto
 server.listen(puerto,()=>console.log("levantando puerto 3000 "));

@@ -71,22 +71,14 @@ function agregarProducto(req, res) {
         );
     // El producto no existe
     if (resultado === "NO_EXISTE") {
-
         mostrarError404(req, res);
         return;
     }
-    if (resultado === "OK") {
+   if (resultado === "OK") {
     const cantidad = cartService.calcularCantidadCarrito(req.session);
-    websocketService.enviarASesion(
-        req.sessionID,
-        JSON.stringify({
-            type: "cartUpdated",
-            payload: {
-                cantidad: cantidad
-            }
-        })
-    );
+    websocketService.enviarEventoASesion(req.sessionID,"cartUpdated",{ cantidad: cantidad });
 }
+
     // Producto sin stock
     if (resultado === "SIN_STOCK") {
         res.redirect(
