@@ -1,5 +1,4 @@
-//navegador solicita conexion a server web socket
-const socket = new WebSocket("ws://localhost:3000");
+
 //obtenemos elemento document desde el html de la pagina
 const indicador = document.getElementById("estadoConexion");
 console.log(indicador);
@@ -105,4 +104,3 @@ function conectarWebSocket() {
 // Iniciar la primera conexión
 conectarWebSocket();
 
-conectarWebSocket();
