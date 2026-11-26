@@ -1,12 +1,16 @@
 const express = require("express");
+
+const cors = require("cors");
 const router = require("./src/routes/productRoutes");
 const http = require("http");
 const WebSocket = require("ws");
 const expressLayouts = require('express-ejs-layouts');
 const app=express();
+app.use(express.json());
 const cartService = require("./src/services/cartService");
 const websocketService = require("./src/services/websocketService");
-
+const productsApiRouter = require("./src/routes/api/productsApiRoutes");
+app.use(cors());
 app.use(express.urlencoded({ extended: true }))
 const session = require("express-session");
 
@@ -55,7 +59,9 @@ app.use((req, res, next) => {
     res.locals.cantidadCarrito = cantidadCarrito;
     next();
 });
+app.use("/api/products", productsApiRouter);
 app.use(router);
+
 const puerto = 3000;
 
 

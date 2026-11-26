@@ -100,7 +100,6 @@ function conectarWebSocket() {
         }
     });
 }
-
 // Iniciar la primera conexión
 conectarWebSocket();
 
